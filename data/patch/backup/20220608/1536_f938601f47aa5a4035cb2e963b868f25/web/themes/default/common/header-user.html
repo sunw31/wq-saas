@@ -1,0 +1,41 @@
+<li class="dropdown user" >
+	<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" ><i class="wi wi-user"></i><span class="caret"></span></a>
+	<ul class="dropdown-menu color-gray dropdown-menu-right" role="menu">
+		{if $_W['isw7_sign']}
+			<li><a href="javascript:;" onclick="goToConsoleUser(1)">
+				控制台用户名： {if !empty($_GET['console_username'])}{php echo $_GET['console_username']}{else}{php echo igetcookie('__console_username')}{/if}
+			</a></li>
+			<script>
+				var goToConsoleUser = function(type) {
+					if(window.parent) {
+						window.parent.postMessage({goHome: type}, '*')
+					}
+				};
+			</script>
+			<li class="divider"></li>
+		{/if}
+		<li><a href="javascript:;">系统用户名： {$_W['username']}</a></li>
+		<li class="divider"></li>
+		{if !$_W['isw7_sign']}
+			<li><a href="{url 'user/profile'}{if !$_W['iscontroller']}iscontroller=0{/if}"><i class="wi wi-money color-gray"></i> 我的账号</a></li>
+			<li class="divider"></li>
+		{/if}
+		{if user_is_vice_founder($_W['uid'])}
+			<li><a href="{php echo url('account/manage', array('iscontroller' => 1))}" ><i class="wi wi-user color-gray"></i> 副站长控制台</a></li>
+			<li class="divider"></li>
+		{/if}
+		<li><a href="#" id="updateCache"><i class="wi wi-cache color-gray"></i> 更新缓存</a></li>
+		{if !$_W['isw7_sign']}<li class="divider"></li><li><a href="#" id="logout"><i class="fa fa-sign-out color-gray"></i> 退出系统</a></li>{/if}
+		<script>
+			$(function() {
+				$('#logout').on('click', function(){
+					$('.loader').show();
+					$.post('./index.php?c=user&a=logout', function(data) {
+						$('.loader').hide();
+						top.location.href = data.redirect;
+					}, 'json');
+				});
+			});
+		</script>
+	</ul>
+</li>

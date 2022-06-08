@@ -1,0 +1,1 @@
+{"containerPort":8081,"minNum":1,"maxNum":20,"cpu":0.5,"mem":1,"policyType":"cpu","policyThreshold":80,"envParams":{"MYSQL_DATABASE":"we7_300736_w7_pros","PROJECT_AUTH_KEY":"pOn7h0KK","PROJECT_COOKIE_KEY":"pK4Z_","APP_ID":"300736","APP_SECRET":"40c8c7a697cdb11a2aa0019aae61312a"},"customLogs":"stdout","initialDelaySeconds":2}

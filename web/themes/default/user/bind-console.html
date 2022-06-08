@@ -1,0 +1,25 @@
+{template 'common/header-base'}
+<div class="console-page">
+	<div class="console-page__head">
+		<a href="{$_W['siteroot']}">
+			<img src="{if !empty($_W['setting']['copyright']['flogo'])}{php echo to_global_media($_W['setting']['copyright']['flogo'])}{else}./resource/images/logo/logo-219.png{/if}" class="logo" style="max-height: 40px;">
+		</a>
+		<div class="skin-2__header">
+			<ul class="user-info">
+				{template 'common/header-user'}
+			</ul>
+		</div>
+	</div>
+	<div class="console-page__body console-page__body--empty">
+		<div class="console-result">
+			<i class="wi wi-info console-result__icon"></i>
+			<div class="console-result__desc">
+				管理员已将系统客户端移至应用市场控制台，你需要绑定/注册应用市场账号后再访问。
+			</div>
+			<div class="console-result__action">
+				<a href="{php echo '//console.w7.cc/bind?appid=' . $_W['setting']['site']['key'] . '&redirect_url=' . urlencode(url('user/third-bind/bind_console', array(), true))}" class="btn btn-primary">去绑定/注册</a>
+			</div>
+		</div>
+	</div>
+</div>
+{template 'common/footer'}

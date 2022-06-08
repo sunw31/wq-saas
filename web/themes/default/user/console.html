@@ -1,0 +1,50 @@
+{template 'common/header-base'}
+<div class="console-page">
+	<div class="console-page__head">
+		<a href="{$_W['siteroot']}">
+			<img src="{if !empty($_W['setting']['copyright']['flogo'])}{php echo to_global_media($_W['setting']['copyright']['flogo'])}{else}./resource/images/logo/logo-219.png{/if}" class="logo" style="max-height: 40px;">
+		</a>
+		<div class="skin-2__header">
+			<ul class="user-info">
+				{template 'common/header-user'}
+			</ul>
+		</div>
+	</div>
+	<div class="console-page__body">
+		<h1>选择身份登录</h1>
+		<div class="alert alert-info">
+			<i class="wi wi-info"></i> 管理员已将系统客户端移至控制台，请登录应用市场（s.w7.cc），点击顶部导航条中的控制台菜单进行操作。
+		</div>
+		<div class="console-type">
+			{if !empty($_W['isadmin'])}
+			<a href="{php echo url('user/third-bind/console_url', array('type' => 'we7'))}" class="console-item">
+				<i class="wi wi-apply console-item__icon"></i>
+				<div class="console-item__title">
+					站点控制台
+				</div>
+				<div class="console-item__desc">站点控制台可以管理创始人账号下的所有微擎站点，拥有站点管理，应用管理，权限组及用户管理等管理功能</div>
+				<button class="btn btn-default">创始人使用</button>
+			</a>
+			{/if}
+			<a href="{php echo url('user/third-bind/console_url', array('type' => 'client'))}" class="console-item">
+				<i class="wi wi-co-founder console-item__icon"></i>
+				<div class="console-item__title">
+					客户端控制台
+				</div>
+				<div class="console-item__desc">进入当前站点的用户操作后台，可创建公众号、小程序等平台类型以及操作账号权限内的相关功能</div>
+				<button class="btn btn-default">用户使用</button>
+			</a>
+			{if !empty($_W['isadmin'])}
+			<a href="{php echo url('user/third-bind/console_url', array('type' => 'system'))}" class="console-item">
+				<i class="wi wi-co-founder console-item__icon"></i>
+				<div class="console-item__title">
+					返回旧版
+				</div>
+				<div class="console-item__desc">返回旧版代表关闭新版体验，如需重新开启，前往站点控制台->站点/菜单设置->站点设置->开启云端控制台模式</div>
+				<button class="btn btn-default">返回旧版</button>
+			</a>
+			{/if}
+		</div>
+	</div>
+</div>
+{template 'common/footer'}
